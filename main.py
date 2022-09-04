@@ -44,7 +44,7 @@ def stemmer():
 def calculate(token_list, token_dict, title):
     print(f"{title}\n")
     print(f"Total number of words: {len(token_list)}")
-    print(f"Total number of words: {len(token_dict)}")
+    print(f"Vocabulary size: {len(token_dict)}")
     print()
     print("Top 20 words in order of reducing frequencies: ")
     sorted_word_list = [ele[0] for ele in sorted(token_dict.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)[:20]]
