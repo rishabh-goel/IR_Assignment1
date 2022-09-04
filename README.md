@@ -70,3 +70,9 @@ No stopwords found
 Minimum number of unique words accounting for 15% of the total number of words in the collection: 24
 ------------------------------------------------------------------------------------------------------
 ```
+
+
+### References
+
+https://likegeeks.com/python-remove-punctuation/#Using_nltk
+https://www.geeksforgeeks.org/python-stemming-words-with-nltk/
