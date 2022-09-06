@@ -1,7 +1,5 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# Created By: Rishabh Goel
+# Created Date: Sept 3, 2022
 
 import os
 import string
@@ -14,6 +12,7 @@ directory = "/Users/rishabhgoel/Documents/Fall22/IR/citeseer"
 # Change the directory
 os.chdir(directory)
 
+# Set of stopwords from english
 stopwords = set(stopwords.words('english'))
 
 word_list = []
@@ -22,25 +21,47 @@ stem_list = []
 stem_dict = {}
 
 
+# Helper method to add item to list as well as dictionary
+def add_to_list_and_dict(item, item_list, item_dict):
+    item_list.append(item)
+
+    if item in item_dict:
+        item_dict[item] += 1
+    else:
+        item_dict[item] = 1
+
+
+# Method to tokenize the text
 def tokenize(content):
     translation = str.maketrans({key: None for key in string.punctuation})
     return content.translate(translation).lower().split()
 
 
+# Method to stem the tokens using Porter Stemmer
 def stemmer():
     porter_stemmer = PorterStemmer()
 
     for word in word_list:
         if word not in stopwords:
             value = porter_stemmer.stem(word)
-            stem_list.append(value)
-
-            if value in stem_dict:
-                stem_dict[value] += 1
-            else:
-                stem_dict[value] = 1
+            add_to_list_and_dict(value, stem_list, stem_dict)
 
 
+# Method to read the text files from the file directory on line 10
+def read_files(file_directory):
+    for filename in os.listdir(file_directory):
+        file = file_directory + '/' + filename
+        f = open(file, 'r')
+        content = f.read()
+        tokens = tokenize(content)
+
+        for token in tokens:
+            add_to_list_and_dict(token, word_list, word_dict)
+
+        f.close()
+
+
+# Method to answer the questions in the assignment
 def calculate(token_list, token_dict, title):
     print(f"{title}\n")
     print(f"Total number of words: {len(token_list)}")
@@ -76,24 +97,7 @@ def calculate(token_list, token_dict, title):
     print("------------------------------------------------------------------------------------------------------\n")
 
 
-def read_files(file_directory):
-    for filename in os.listdir(file_directory):
-        file = file_directory + '/' + filename
-        f = open(file, 'r')
-        content = f.read()
-        tokens = tokenize(content)
-
-        for token in tokens:
-            word_list.append(token)
-
-            if token in word_dict:
-                word_dict[token] += 1
-            else:
-                word_dict[token] = 1
-
-        f.close()
-
-
+# Starting point of the program
 if __name__ == '__main__':
     read_files(directory)
     stemmer()
