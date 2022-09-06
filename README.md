@@ -41,6 +41,10 @@ _**Note: Edit the directory in main.py where the text files are stored**_
 5. Minimum number of unique words accounting for 15% of the total number of words in the collection
 
 
+#### _def add_to_list_and_dict(item, item_list, item_dict)_
+1. Method to add item to the list as well as dictionary
+2. Called from both `stemmer()` and `read_files()`
+
 ### Result
 
 ```
