@@ -13,7 +13,10 @@
 2. Run `python main.py`
 
 
-_**Note: Edit the directory in main.py where the text files are stored**_
+**Notes:**
+1. Edit the directory in main.py where the text files are stored
+2. [Install NLTK in Pycharm](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html#packages-tool-window)
+3. [Install NLTK in terminal](https://www.guru99.com/download-install-nltk.html#3)
 
 ### Functionality
 
